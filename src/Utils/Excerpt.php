@@ -111,7 +111,7 @@ class Excerpt
         $relText = mb_substr($fulltext, $startPos, $relLength);
 
         // check to ensure we don't snip the last word if that's the match
-        if ($startPos + $relLength < $textlength) {
+        if (($startPos + $relLength < $textlength) && mb_strrpos($relText, ' ')) {
             $relText = mb_substr($relText, 0, mb_strrpos($relText, ' ')) . $indicator; // remove last word
         }
 
